@@ -29,9 +29,7 @@ The objective of this application is to connect customers who want to donate rec
 ---
 
 ## ⚙️ Installation
-1. Clone the repository:
-```bash
-git clone https://github.com/Anushka/WasteManagementApp.git
+ Clone the repository
 
 ### 📸 Screenshots
 
