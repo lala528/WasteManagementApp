@@ -33,37 +33,25 @@ The objective of this application is to connect customers who want to donate rec
 ```bash
 git clone https://github.com/Anushka/WasteManagementApp.git
 
-## 📸 Screenshots
+### 📸 Screenshots
 
 ### 🏠 Home Page (Index)
 ![Home](index.png.jpg)
 
----
-
 ### 🔐 Login Page
 ![Login](login.png.jpg)
-
----
 
 ### 📝 Sign Up Page
 ![Signup](signup.png.jpg)
 
----
-
 ### ⚙️ Choose Page
 ![Choose](choose.png.jpg)
-
----
 
 ### ♻️ Select Waste Page
 ![Select](select.png.jpg)
 
----
-
 ### 📦 Quantity Page
 ![Quantity](quantity.png.jpg)
-
----
 
 ### 📚 Learn Page
 ![Learn](learn.png.jpg)
