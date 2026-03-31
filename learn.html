@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Learn How We Recycle</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* ===== PAGE SCOPE ===== */
+.learn-page{
+display:block;
+margin:0;
+padding-top:110px; /* space for header + navbar */
+}
+
+/* ===== HEADER (TITLE) ===== */
+.learn-page .header-text{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#1b5e20;
+color:white;
+text-align:center;
+font-size:18px;
+font-weight:bold;
+padding:10px;
+z-index:1100;
+}
+
+/* ===== NAVBAR ===== */
+.learn-page .navbar{
+position:fixed;
+top:50px; /* below header */
+left:0;
+width:100%;
+display:flex;
+gap:10px;
+padding:10px;
+background:#1b5e20;
+z-index:1000;
+}
+
+/* Navbar buttons */
+.learn-page .navbar button{
+flex:1;
+width:auto;
+padding:14px 0;
+font-size:16px;
+border-radius:25px;
+background:#2e7d32;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+/* Active tab */
+.learn-page .navbar button.active{
+background:#a5d6a7;
+color:#1b5e20;
+}
+
+/* Home button (last, dark blue) */
+.learn-page .navbar .home-btn{
+background:#0d47a1;
+}
+
+/* ===== IMAGE SECTION ===== */
+.learn-page .image-section{
+position:relative;
+width:100%;
+height:calc(100vh - 110px); /* full screen minus header+navbar */
+overflow:hidden;
+}
+
+/* Image */
+.learn-page .image-section img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* ===== TEXT OVERLAY (BOTTOM LEFT) ===== */
+.learn-page .overlay{
+position:absolute;
+bottom:20px;
+left:20px;
+right:20px;
+
+color:white;
+font-size:24px;
+font-weight:bold;
+text-align:left;
+
+/* readability */
+text-shadow:
+2px 2px 6px rgba(0,0,0,0.9),
+-1px -1px 3px rgba(0,0,0,0.8);
+
+/* gradient */
+background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+padding:15px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body class="learn-page">
+
+<!-- HEADER TEXT -->
+<div class="header-text">
+Learn how we recycle – click a waste button to learn how we recycle it
+</div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+<button onclick="showWaste('paper', this)" class="active">Paper</button>
+<button onclick="showWaste('tin', this)">Tin</button>
+<button onclick="showWaste('glass', this)">Glass</button>
+<button onclick="showWaste('plastic', this)">Plastic</button>
+<button onclick="showWaste('wet', this)">Bio Waste</button>
+<button class="home-btn" onclick="goHome()">Home</button>
+</div>
+
+<!-- IMAGE -->
+<div class="image-section">
+
+    <!-- LEFT: IMAGE -->
+    <div class="left">
+        <img id="wasteImage" src="images/paper.png">
+    </div>
+
+    <!-- RIGHT: TEXT -->
+    <div class="right" id="wasteText">
+        ♻️ Paper<br><br>
+        • Waste paper is collected<br>
+        • It is shredded into pulp<br>
+        • New paper is formed
+    </div>
+
+</div>
+
+<!-- SCRIPT -->
+<script>
+
+function showWaste(type, btn){
+
+const data = {
+  paper: {
+    img: "images/paper.png",
+    text: "♻️ Paper<br><br>\
+• Waste paper is collected and sorted based on quality<br>\
+• It is shredded and mixed with water to form pulp<br>\
+• Ink and dirt are removed through cleaning processes<br>\
+• The pulp is pressed and dried into new paper sheets<br>\
+• Recycled paper is used to make newspapers and notebooks<br>\
+• It is also used for cardboard boxes and packaging materials"
+  },
+
+  tin: {
+    img: "images/tin.png",
+    text: "🥫 Tin (Metal)<br><br>\
+• Metal waste is collected and separated using magnets<br>\
+• It is cleaned to remove impurities and coatings<br>\
+• The metal is melted at very high temperatures<br>\
+• Melted metal is poured into molds to form new shapes<br>\
+• Recycled tin is used to make new cans and containers<br>\
+• It is also used in construction materials and machinery parts"
+  },
+
+  glass: {
+    img: "images/glass.png",
+    text: "🍾 Glass<br><br>\
+• Glass is collected and sorted by color<br>\
+• It is crushed into small pieces called cullet<br>\
+• The cullet is melted in a furnace<br>\
+• Melted glass is molded into new products<br>\
+• Recycled glass is used to make bottles and jars<br>\
+• It is also used for tiles, decorations, and fiberglass"
+  },
+
+  plastic: {
+    img: "images/plastic.png",
+    text: "🧴 Plastic<br><br>\
+• Plastic waste is sorted by type and cleaned<br>\
+• It is shredded into small flakes or pieces<br>\
+• The plastic is melted and converted into pellets<br>\
+• These pellets are used to manufacture new items<br>\
+• Recycled plastic is used for bottles and containers<br>\
+• It is also used to make clothing fibers and furniture"
+  },
+
+  wet: {
+    img: "images/wetwaste.png",
+    text: "🌱 Wet Waste (Organic Waste)<br><br>\
+• Food and organic waste is collected separately<br>\
+• It is decomposed naturally through composting<br>\
+• Microorganisms break it down into nutrient-rich compost<br>\
+• It can also be processed in biogas plants<br>\
+• Biogas produced is used for cooking and electricity<br>\
+• The leftover material becomes organic fertilizer"
+  }
+};
+
+document.getElementById("wasteImage").src = data[type].img;
+document.getElementById("wasteText").innerHTML = data[type].text;
+
+/* active tab */
+document.querySelectorAll(".navbar button").forEach(b => b.classList.remove("active"));
+btn.classList.add("active");
+}
+
+function goHome(){
+window.location.href="index.html";
+}
+
+</script>
+
+</body>
+</html>

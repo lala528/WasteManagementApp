@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Sign Up</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Create Account</h2>
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+
+<div class="phone-container">
+
+<select id="countryCode">
+<option value="+91">India (+91)</option>
+<option value="+1">USA (+1)</option>
+<option value="+44">UK (+44)</option>
+<option value="+61">Australia (+61)</option>
+<option value="+971">UAE (+971)</option>
+<option value="+81">Japan (+81)</option>
+<option value="+49">Germany (+49)</option>
+<option value="+33">France (+33)</option>
+<option value="+39">Italy (+39)</option>
+<option value="+86">China (+86)</option>
+<option value="+880">Bangladesh (+880)</option>
+<option value="+92">Pakistan (+92)</option>
+<option value="+94">Sri Lanka (+94)</option>
+<option value="+977">Nepal (+977)</option>
+</select>
+
+<input
+type="text"
+id="phone"
+placeholder="Phone Number"
+maxlength="10"
+oninput="numbersOnly(this)"
+required>
+
+</div>
+
+<select id="state" onchange="updateCity()" required>
+
+<option value="">Select State</option>
+
+<option>Andhra Pradesh</option>
+<option>Arunachal Pradesh</option>
+<option>Assam</option>
+<option>Bihar</option>
+<option>Chhattisgarh</option>
+<option>Goa</option>
+<option>Gujarat</option>
+<option>Haryana</option>
+<option>Himachal Pradesh</option>
+<option>Jharkhand</option>
+<option>Karnataka</option>
+<option>Kerala</option>
+<option>Madhya Pradesh</option>
+<option>Maharashtra</option>
+<option>Manipur</option>
+<option>Meghalaya</option>
+<option>Mizoram</option>
+<option>Nagaland</option>
+<option>Odisha</option>
+<option>Punjab</option>
+<option>Rajasthan</option>
+<option>Sikkim</option>
+<option>Tamil Nadu</option>
+<option>Telangana</option>
+<option>Tripura</option>
+<option>Uttar Pradesh</option>
+<option>Uttarakhand</option>
+<option>West Bengal</option>
+
+</select>
+
+<select id="city">
+<option>Select City</option>
+</select>
+
+<input type="text" id="pincode" placeholder="Enter Your PIN Code" maxlength="6" oninput="numbersOnly(this)" required>
+
+<input type="text" id="major" placeholder="Enter Major Address (Area / Locality)" required>
+
+<input type="text" id="minor" placeholder="Enter Minor Address (House No / Street)" required>
+
+<input type="email" id="email" placeholder="Enter Your Email" autocomplete="off" required>
+
+<input type="password" id="password" placeholder="Enter Your Password" autocomplete="new-password" required>
+
+<button onclick="signup()">Sign Up</button>
+
+</div>
+
+<script>
+
+// numbers only input
+function numbersOnly(input){
+input.value = input.value.replace(/[^0-9]/g,'');
+}
+
+// city database
+const cities = {
+
+"Odisha": ["Bhubaneswar","Cuttack","Rourkela","Puri","Berhampur"],
+
+"West Bengal": ["Kolkata","Howrah","Durgapur","Asansol","Siliguri"],
+
+"Maharashtra": ["Mumbai","Pune","Nagpur","Nashik","Aurangabad"],
+
+"Karnataka": ["Bangalore","Mysore","Mangalore","Hubli","Belgaum"],
+
+"Tamil Nadu": ["Chennai","Coimbatore","Madurai","Salem","Trichy"],
+
+"Uttar Pradesh": ["Lucknow","Kanpur","Varanasi","Noida","Agra"],
+
+"Bihar": ["Patna","Gaya","Muzaffarpur","Bhagalpur"],
+
+"Rajasthan": ["Jaipur","Jodhpur","Udaipur","Kota"],
+
+"Gujarat": ["Ahmedabad","Surat","Vadodara","Rajkot"],
+
+"Punjab": ["Amritsar","Ludhiana","Jalandhar","Patiala"],
+
+"Kerala": ["Kochi","Trivandrum","Kozhikode"],
+
+"Assam": ["Guwahati","Silchar"],
+
+"Goa": ["Panaji","Margao"],
+
+"Jharkhand": ["Ranchi","Jamshedpur"],
+
+"Chhattisgarh": ["Raipur","Bilaspur"],
+
+"Haryana": ["Gurgaon","Faridabad"],
+
+"Himachal Pradesh": ["Shimla","Manali"],
+
+"Arunachal Pradesh": ["Itanagar"],
+
+"Manipur": ["Imphal"],
+
+"Meghalaya": ["Shillong"],
+
+"Mizoram": ["Aizawl"],
+
+"Nagaland": ["Kohima"],
+
+"Sikkim": ["Gangtok"],
+
+"Tripura": ["Agartala"],
+
+"Telangana": ["Hyderabad","Warangal"],
+
+"Madhya Pradesh": ["Bhopal","Indore","Gwalior"],
+
+"Uttarakhand": ["Dehradun","Haridwar"],
+
+"Andhra Pradesh": ["Vijayawada","Visakhapatnam"]
+
+};
+
+
+// update cities
+function updateCity(){
+
+let state = document.getElementById("state").value;
+let citySelect = document.getElementById("city");
+
+citySelect.innerHTML = "<option>Select City</option>";
+
+if(cities[state]){
+
+cities[state].forEach(function(city){
+
+let option = document.createElement("option");
+option.text = city;
+citySelect.add(option);
+
+});
+
+}
+
+}
+
+
+// signup validation
+function signup(){
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let email = document.getElementById("email").value;
+let major = document.getElementById("major").value;
+
+if(phone.length != 10){
+alert("Phone number must be exactly 10 digits");
+return;
+}
+
+if(!email.endsWith("@gmail.com")){
+alert("Email must end with @gmail.com");
+return;
+}
+
+if(major.trim() === ""){
+alert("Major Address cannot be empty");
+return;
+}
+
+localStorage.setItem("username", name);
+
+alert("Signup Successful");
+
+window.location.href="choose.html";
+
+}
+
+</script>
+
+</body>
+</html>
